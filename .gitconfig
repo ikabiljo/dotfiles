@@ -1,0 +1,41 @@
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+
+[alias]
+  br = branch -v
+  co = checkout
+  ci = commit
+  st = status
+
+  treelog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+#  treelog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+
+  stash-search = "!f() { git show $(git stash list | cut -d\":\" -f 1) | grep \"$@\" ; }; f" 
+
+  undocommit = reset --soft HEAD^
+  redocommit = commit -c ORIG_HEAD      
+  
+  gcbr = !git branch --no-track --no-color --merged | sed 's/[ *]*//' | xargs -n1 git branch -d &> /dev/null || exit 0
+
+
+ [log]
+  date = relative
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  plain = white 
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red blink
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
