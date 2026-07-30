@@ -39,6 +39,11 @@ g_continue_cherry_pick_branch () {
 }
 
 # up/down arrows in command line search through matching command history
+# mac (zsh)
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+# bash
+# bind '"\e[A": history-search-backward'
+# bind '"\e[B": history-search-forward'
 
